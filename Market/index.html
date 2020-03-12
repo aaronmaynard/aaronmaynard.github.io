@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Market Watch</title>
+<style>
+body {
+  padding: 0px;
+  margin: 0px;
+  background-color:black;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+.grid-item {
+	background-color:darkgrey;
+	top: 0; 
+	bottom: 0;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="grid-container">
+  <!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_18c5e"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NASDAQ:TSLA",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_18c5e"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_5a6c0"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NASDAQ:MSFT",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_5a6c0"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_d987b"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NYSE:KO",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_d987b"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_2664d"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NASDAQ:FB",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_2664d"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_86aed"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NASDAQ:AMZN",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_86aed"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<!-- TradingView Widget BEGIN -->
+<div class="grid-item tradingview-widget-container">
+  <div id="tradingview_9ede4"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": 640,
+  "height": 515,
+  "symbol": "NASDAQ:TTD",
+  "interval": "D",
+  "timezone": "Etc/UTC",
+  "theme": "Dark",
+  "style": "3",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "range": "12m",
+  "allow_symbol_change": true,
+  "details": true,
+  "container_id": "tradingview_9ede4"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END -->
+</div>
+<!-- TradingView Widget BEGIN -->
+<div class="footer tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "OANDA:SPX500USD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "OANDA:NAS100USD",
+      "title": "Nasdaq 100"
+    },
+    {
+      "description": "GOOG",
+      "proName": "NASDAQ:GOOG"
+    },
+    {
+      "description": "TTD",
+      "proName": "NASDAQ:TTD"
+    },
+    {
+      "description": "AMZN",
+      "proName": "NASDAQ:AMZN"
+    },
+    {
+      "description": "KO",
+      "proName": "NYSE:KO"
+    },
+    {
+      "description": "ADBE",
+      "proName": "NASDAQ:ADBE"
+    },
+    {
+      "description": "AAPL",
+      "proName": "NASDAQ:AAPL"
+    },
+    {
+      "description": "BAC",
+      "proName": "NYSE:BAC"
+    },
+    {
+      "description": "SBUX",
+      "proName": "NASDAQ:SBUX"
+    },
+    {
+      "description": "FB",
+      "proName": "NASDAQ:FB"
+    },
+    {
+      "description": "NFLX",
+      "proName": "NASDAQ:NFLX"
+    },
+    {
+      "description": "TSLA",
+      "proName": "NASDAQ:TSLA"
+    }
+  ],
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+</body>
+</html>
