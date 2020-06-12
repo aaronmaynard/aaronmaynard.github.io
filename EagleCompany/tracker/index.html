@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>[EC-SM] Tracker</title>
+
+    <meta name="description" content="Eagle Company Order Tracker">
+    <meta name="author" content="John Siverfox">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<style>
+		hr {
+		  border:none;
+		  height: 20px;
+			width: 95%;
+			height: 50px;
+			margin-top: 0;
+			border-bottom: 1px solid #1f1209;
+			box-shadow: 0 20px 20px -20px #333;
+		  margin: -50px auto 10px; 
+		}
+		img {
+			max-width:90%
+		}
+	</style>
+  </head>
+  <body>
+  <script>
+	var key = '';
+	var json='{ "range": "Tracking!A2:F10", "majorDimension": "ROWS", "values": [ ["John Silverfox", "EXAMPLE001", "PC9-AY III - Intaki Commerce Trading Post", "Order processed. / Ready for shipping.", "3", "E-Uni CSS"], ["Lexi Silverfox", "EXAMPLE002", "Stacmon V - Moon 9 - Federation Navy Assembly Plant", "Delivered.", "8", "Eagle Company"] ] }';
+	var js = JSON.parse(json);
+	function trackOrder(key){
+		if(key==''){
+			console.log("No Key!");
+		}else{
+			console.log("Order ID: " + key);
+			for(var i=0;i<js.values.length;i++){
+				if(js.values[i][1]==key){
+				 displayOrder(js.values[i]);
+				 return;
+				}
+			}
+		}
+	}
+	function displayOrder(order){
+	var key = order[1];
+	var location = order[2];
+	var status = order[3];
+	var state = order[4];
+	var courier = order[5];
+	console.log(order);
+	document.getElementById("deliveryStatus").innerHTML = "<strong>"+status+"</strong>";
+	document.getElementById("deliveryLocation").innerHTML = "<strong>"+location+"</strong>";
+	document.getElementById("orderKey").innerHTML = "Order Key: <strong>"+key+"</strong>";
+	document.getElementById("courier").innerHTML = "Courier: <strong>"+courier+"</strong>";
+	document.getElementById("deliveryImage").innerHTML = "<img alt='Eagle Company Tracker' src='images/OT"+state+".png'>";
+	}
+  </script>
+    <div class="container-fluid">
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<h3>
+						Eagle Company Tracker
+					</h3>
+				</div>
+				<div class="col-md-6 text-right">
+					 <a id="modal-324849" href="#modal-container-324849" role="button" class="btn" data-toggle="modal">Track Order</a>
+					
+					<div class="modal fade" id="modal-container-324849" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel">
+										Track an order
+									</h5> 
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body text-center">
+									Enter your 10-digit key: <input id="orderID" type="text" placeholder="XXXXXXXXXX" autocomplete="off">
+								</div>
+								<div class="modal-footer">
+									 
+									<span class="waves-input-wrapper waves-effect waves-light"><input type="submit" id="submit" value="Submit" class="btn btn-info" onclick="key=trackOrder(document.getElementById('orderID').value);" data-dismiss="modal"></span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><hr><br>
+	<div class="row">
+		<div class="col-md-6">
+			<h4 class="text-left">
+				<span id="deliveryStatus" style="color:darkorange"><strong>Delivery Status</strong></span>
+			</h4>
+			<p class="text-left">
+				Delivery Location: <span id="deliveryLocation" style="color:green"><strong>Unavailable</strong></span>
+			</p>
+		</div>
+		<div class="col-md-6">
+			<p class="text-right" id="orderKey">
+				Order Key: <strong>Unavailable</strong>
+			</p>
+			<p class="text-right" id="courier">
+				Courier: <strong>Eagle Company</strong>
+			</p>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-md-12 text-center" id="deliveryImage">
+			<img alt='Eagle Company Tracker' src='images/OTN.png'>
+		</div>
+	</div>
+</div>
+<footer class="footer fixed-bottom">
+	<div class="row">
+		<div class="col-md-12">
+			<p class="text-center text-muted">
+				Tracker by <a href="https://wiki.eveuniversity.org/User:John_Silverfox" title="John Silverfox">John Silverfox</a>.  All Eve Related Materials are property of <a href="https://www.ccpgames.com/" title="CCP Games">CCP Games</a>.
+			</p>
+		</div>
+	</div>
+	</footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
