@@ -1,770 +1,100 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>0:1</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">  
-<style type="text/css">/* Chart.js */
-@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
-<body onload="InitThis();" class="" style="">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Start your project here-->  
-  
-<!--Navbar-->
-<nav id="navbar" class="fixed-top navbar navbar-expand-lg navbar-dark primary-color" style="">
+    <title>[EC-SM] Tracker</title>
 
-  <!-- Navbar brand -->
-  <a class="navbar-brand" href="#">
-    <img src="img/eagle.png" height="30" class="d-inline-block align-top" alt="mdb logo"> <b>Eagle Company</b>
-  </a>
-
-  <!-- Collapse button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <!-- Collapsible content -->
-  <div class="collapse navbar-collapse" id="basicExampleNav">
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="#home">Home
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="#services">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="#standards">Standards</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="#testimonials">Testimonials</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="#faq">FAQ</a>
-      </li>
-    </ul>
-    <!-- Links -->
-
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-	  <li class="nav-item avatar">
-        <button type="button" style="background-color: Transparent; border: none; outline:none; " data-toggle="modal" data-target="#bingo">
-			<img src="https://images.evetech.net/characters/2115083264/portrait" class="rounded-circle z-depth-0" alt="avatar image" height="36">
-		</button>
-      </li>
-    </ul>
-  </div>
-  <!-- Collapsible content -->
-
-</nav>
-<!--/.Navbar-->
-
-
-<!-- Jumbotron -->
-<div class="card card-image" id="home" style="background-image: url(img/industry.png); background-size: cover; background-position: right;">
-  <div class="text-white text-center rgba-stylish-strong py-5 px-4">
-    <div class="py-5">
-
-      <!-- Content -->
-      <h2 class="card-title h2 my-4 py-2">Eagle Company</h2>
-      <p class="mb-4 pb-2 px-md-5 mx-md-5">Industrial shipping and manufacturing in the Amarr and Caldari provinces of New Eden.</p>
-    </div>
-  </div>
-</div>
-<!-- Jumbotron -->
-
-<div id="services">
-	<div class="container my-5 p-4">
-
-      <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">Services</h6>
-<h3 class="my-5 h3 text-center">Our Services</h3>
-
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center">
-
-        <!--Grid column-->
-        <div class="col-md-8 text-center">
-
-          <p class="lead text-center text-muted pt-2 mb-5">Join thousands of satisfied customers using our services.</p>
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <div class="row text-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <!--Card-->
-          <div class="card">
-
-            <!-- Card header -->
-            <div class="card-header">
-              <h4>
-                <strong>Fuel Block Sales</strong>
-              </h4>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <h3 class="card-title pricing-card-title mb-4">96%
-                <small class="text-muted">Jita Sell</small>
-              </h3>
-
-              <ol class="list-unstyled mb-4">
-                <li>Bypass Broker Fee's <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Appraisal Verified <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Free delivery for 25k+ fuel blocks <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Free delivery to Jita & Amarr <i class="fas fa-check green-text ml-1"></i>
-                </li>
-              </ol>
-
-              <a href="https://janice.e-351.com/" target="_blank"><button type="button" class="btn btn-lg btn-block btn-primary waves-effect waves-light">Order Now</button></a>
-
-            </div>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <!--Card-->
-          <div class="card">
-
-            <!-- Card header -->
-            <div class="card-header">
-              <h4>
-                <strong>Ice &amp; Ore Buyback</strong>
-              </h4>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <h3 class="card-title pricing-card-title mb-4">96%
-                <small class="text-muted">Jita Buy</small>
-              </h3>
-
-              <ol class="list-unstyled mb-4">
-                <li>Bypass Broker Fee's <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Appraisal Verified <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Drop-off at Jita or Amarr trade hubs <i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Fulfilled at verified stations <i class="fas fa-check green-text ml-1"></i>
-                </li>
-              </ol>
-
-              <a href="https://janice.e-351.com/" target="_blank"><button type="button" class="btn btn-lg btn-block btn-primary waves-effect waves-light">Submit Buyback</button></a>
-
-            </div>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <!--Card-->
-          <div class="card">
-
-            <!-- Card header -->
-            <div class="card-header">
-              <h4>
-                <strong>Mining Fleet Hauling</strong>
-              </h4>
-            </div>
-
-            <!--Card content-->
-            <div class="card-body">
-
-              <h3 class="card-title pricing-card-title mb-4">30%<small class="text-muted"> Individual Cut</small>
-              </h3>
-
-              <ol class="list-unstyled mb-4">
-                <li>Freighter Support<i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Up to 1,000,000 m3<i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>Timesheet included<i class="fas fa-check green-text ml-1"></i>
-                </li>
-                <hr>
-                <li>5 million ISK minimum <i class="fas fa-exclamation blue-text ml-1"></i>
-                </li>
-              </ol>
-
-              <button type="button" data-toggle="modal" data-target="#MFOCalculator" class="btn btn-lg btn-block btn-primary waves-effect waves-light">Calculate</button>
-
-            </div>
-
-          </div>
-          <!--/.Card-->
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
-
-    </div>
-</div>
-
-<!--Modal: bingo-->
-<div class="modal fade right" id="bingo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <form action="" id="bingoform" onsubmit="return false;">
-  <div class="modal-dialog modal-lg modal-full-height modal-right modal-notify modal-info" role="document">
-    <!--Content-->
-    <div class="modal-content text-left">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-        <p class="heading">EVE BINGO</p>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body">
-
-        <div align="center">
-			<canvas id="myCanvas" width="693" height="828" style="border:2px solid black"></canvas>
-			<br><br>
-			Line width : <select id="selWidth">
-				<option value="1">1</option>
-				<option value="3">3</option>
-				<option value="5">5</option>
-				<option value="7">7</option>
-				<option value="9" selected="selected">9</option>
-				<option value="11">11</option>
-			</select> 
-			Color : <select id="selColor">
-				<option value="black">black</option>
-				<option value="blue" selected="selected">blue</option>
-				<option value="red">red</option>
-				<option value="green">green</option>
-				<option value="yellow">yellow</option>
-				<option value="gray">gray</option>
-			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button onclick="javascript:cUndo();return false;">Undo</button>
-			<button onclick="javascript:cRedo();return false;">Redo</button>
-		</div>
-	
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer flex-center">
-        <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" id="submit" value="New Board" class="btn btn-info" onclick="javascript:drawImage();return false;"></span>
-        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Close</a>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-  </form>
-</div>
-<!--Modal: bingo-->
-
-<!--Modal: modalPush-->
-<div class="modal fade" id="MFOCalculator" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
-  <form action="" id="miningForm" onsubmit="return false;" _lpchecked="1">
-  <div class="modal-dialog modal-notify modal-info" role="document">
-    <!--Content-->
-    <div class="modal-content text-left">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-        <p class="heading">Hauling Service Calculator</p>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body">
-
-        <center><i class="fas fa-handshake fa-4x animated rotateIn mb-4"></i></center>
-<p>Fill out the form to calculate the estimated costs for the operation.  There is a 5 million ISK minimum.</p>
-
-	<label class="active">Number of miners, including booster(s)</label>
+    <meta name="description" content="Eagle Company Order Tracker">
+    <meta name="author" content="John Siverfox">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container-fluid">
 	<br>
-	<input type="text" id="numberMiners">
-	<br><br>
-	<label class="active">Value of ice/ore from the operation</label>
-	<br>
-	<input type="text" id="materialValue">
-	<br><br>
-	<label class="active">Service Cost: </label> <b><font color="green"><span id="serviceCost">24,000,000.00 ISK</span></font></b>
-	
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer flex-center">
-        <span class="waves-input-wrapper waves-effect waves-light"><input type="submit" id="submit" value="Calculate" class="btn btn-info" onclick="getServiceCost()"></span>
-        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">Close</a>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-  </form>
-  <script>
-  function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	}
-  function getServiceCost(){
-	num1 = document.getElementById("numberMiners").value;
-	num2 = document.getElementById("materialValue").value;
-	total = (parseInt(num2)*0.3)/((parseInt(num1)+1))
-	if(total>5000000){
-		document.getElementById("serviceCost").innerHTML = numberWithCommas(total.toFixed(2))+" ISK";
-	}else
-		document.getElementById("serviceCost").innerHTML = "5 million ISK, due to minimum";
-	}
-  </script>
-</div>
-<!--Modal: modalPush-->
-
-<div class="container z-depth-1 my-5 p-4" id="standards">
-
-  <!-- Section -->
-  <section>
-    	<h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">STANDARDS</h6>
-
-		<h3 class="font-weight-bold text-center dark-grey-text pb-2">Eagle Company Stations</h3>
-    <hr class="w-header my-4">
-    <p class="lead text-center text-muted pt-2 pb-3 mb-5">Enjoy these amenities any time you visit one of our public locations within New Eden!</p>
-    <div class="row dark-grey-text">
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-primary"><i class="icon-fa fas fa-cogs fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Station Services</h6>
-            <p class="text-muted">Many of our station have refining, engineering, or cloning services; all of which are complimentary.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-danger"><i class="icon-fa fas fa-wine-glass-alt fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Relaxation Station</h6>
-            <p class="text-muted">Enjoy a nice relaxing time at any of our lounges, spas, or food and winery!</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-info"><i class="icon-fa fas fa-suitcase fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Corporation Offices</h6>
-            <p class="text-muted">Rental cycles are 30 days, with the first payment automatically being deducted when the office is rented for the first time.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-warning"><i class="icon-fa fas fa-leaf fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Delux Ship Wash</h6>
-            <p class="text-muted">Each EC station has the finest ship cleaning services, found in Hangar B; use coupon "Clean Ship" for a free wash.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-muted"><i class="icon-fa fas fa-clipboard fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Contract Services</h6>
-            <p class="text-muted">Need something done? Head down to logistics to create Item Exchange or Courier Contracts.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-xl-4 mb-4">
-        <div class="media">
-          <div class="mr-4">
-            <span class="text-success"><i class="icon-fa fas fa-bus fa-2x"></i></span>
-          </div>
-          <div class="media-body">
-            <h6 class="font-weight-bold">Concourse Transportation</h6>
-            <p class="text-muted">All pilots and residence may use our complimentary transportation serves between 05:00 - 22:00.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
-  <!-- Section -->
-  
-</div>
-
-
-<div class="container my-5 p-4" id="testimonials">
-  
-  <!--Section: Content-->
-  <section class="text-center dark-grey-text">
-
-	<h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">TESTIMONIALS</h6>
-    <!-- Section heading -->
-    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center">What others say about us</h3>
-    <hr class="w-header">
-	
-    <!-- Grid row -->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-12 mb-4">
-
-      	<div class="wrapper-carousel-fix">
-        
-          <!-- Carousel Wrapper -->
-          <div id="carousel-example-1" class="carousel no-flex testimonial-carousel slide data-interval=" 3000""="" data-ride="carousel">
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-              <!--First slide-->
-              <div class="carousel-item active">
-                <p class="lead font-italic">"The infrastructure is pretty good, but thats only half of it.  Best toilets I have ever seen... WOW!!"</p>
-                <div class="view card-img-64 mx-auto mt-5 mb-4">
-                  <img src="https://images.evetech.net/characters/1391276264/portrait" class="rounded-circle img-fluid" alt="smaple image">
-                </div>
-                <p class="text-muted">- Seamore Butts, Janitor</p>
-              </div>
-              <!--First slide-->
-              <!--Second slide-->
-              <div class="carousel-item">
-                <p class="lead font-italic">"The lounges are pretty. You can get free drinks. Everyone is so nice, they keep giving me ISK!"</p>
-                <div class="view card-img-64 mx-auto mt-5 mb-4">
-                  <img src="https://images.evetech.net/characters/95932207/portrait" class="rounded-circle img-fluid" alt="smaple image">
-                </div>
-                <p class="text-muted">- Elianata Luve, Exotic Dancer</p>
-              </div>
-              <!--Second slide-->
-              <!--Third slide-->
-              <div class="carousel-item">
-                <p class="lead font-italic">"{response_%random[42]}"</p>
-                <div class="view card-img-64 mx-auto mt-5 mb-4">
-                  <img src="https://images.evetech.net/characters/2116228885/portrait" class="rounded-circle img-fluid" alt="smaple image">
-                </div>
-                <p class="text-muted">- {name_gen_%random[4]}, profession_%random[101]</p>
-              </div>
-              <!--Third slide-->
-            </div>
-            <!--Slides-->
-            <!--Controls-->
-            <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next right carousel-control" href="#carousel-example-1" role="button" data-slide="next">
-              <span class="icon-next" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            <!--Controls-->
-          </div>
-          <!-- Carousel Wrapper -->
-          
-        </div>
-        
-      </div>
-      <!-- Grid column -->
-
-    </div>
-    <!-- Grid row -->
-    
-  </section>
-  <!--Section: Content-->
-
-
-</div>      
-
-
-<div class="container z-depth-1 my-5 p-4" id="faq">
-
-
-  <!--Section: Content-->
-  <section>
-
-    <h6 class="font-weight-normal text-uppercase font-small grey-text mb-4 text-center">FAQ</h6>
-    <!-- Section heading -->
-    <h3 class="font-weight-bold black-text mb-4 pb-2 text-center">Frequently Asked Questions</h3>
-    <hr class="w-header">
-    <!-- Section description -->
-    <p class="lead text-muted mx-auto mt-4 pt-2 mb-5 text-center">Got a question? We've got answers. If you have some other questions, see our support center.</p>
-
-		<div class="row">
-      <div class="col-md-12 col-lg-10 mx-auto mb-5">
-      
-        <!--Accordion wrapper-->
-        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-
-          <!-- Accordion card -->
-          <div class="card border-top border-bottom-0 border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingOne1">
-              <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-                <h5 class="black-text font-weight-normal mb-0">
-                  How do I make an order or buyback request? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-              <div class="card-body">
-				Highlight and copy the ice / ore you wish to submit for your buyback from the detailed view in your hangar.  Click the link and paste your ice / ore in the text field.  Select "Show advanced options" in the lower left corner, and make sure the following are set:<br>
-				<ul>
-				<li> Designation: <b>Appraisal</b> to obtain an id.</li>
-				<li> Pricing: <b>Jita</b> and <b>Buy</b> if you are making a purchase or <b>Sell</b> if you are submitting a buyback.</li>
-				<li> Price percentage: <b>96.00</b> for overhead costs.</li>
-				<li> Comment: If you want to leave a comment, that's up to you.</li>
-				<li> Compactize: <b>Checked</b></li>
-				</ul>
-				Submit and copy the appraisal id (ei: "PP7MT4") in the description of the contract.  If submitting a buyback, copy the Buy price and paste it in the "I will receive" section of the contract.  If making an order, copy the Sell price and paste it in the "I will pay" section.  Set the expiration to <b>4 weeks</b>, and contract to Eagle Company (make sure you select the right one).
-              </div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-
-          <!-- Accordion card -->
-          <div class="card border-bottom-0 border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingTwo2">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                <h5 class="black-text font-weight-normal mb-0">
-                  How long does it take for my buyback to complete? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
-              <div class="card-body">
-              	Buyback requests are usually handled between 2-3 days, however it could be longer.  Make sure you have set the expiration date to <b>4 weeks</b>.  If buyback orders are not submitted correctly, the contract may be canceled.
-              </div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-
-          <!-- Accordion card -->
-          <div class="card border-bottom-0 border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingThree3">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3" aria-expanded="false" aria-controls="collapseThree3">
-                <h5 class="black-text font-weight-normal mb-0">
-                  What is the maximum order amount for fuel blocks? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
-              <div class="card-body">
-				The current limit is 100,000 Helium Fuel Blocks per contract or 2 billion ISK;  we can fulfill this within 24 hours. Orders may be delivered at the following locations:<br>
-				<ul>
-				<li> Perimeter - Tranquility Trading Tower </li>
-				<li> Jita - Caldari Navy Assembly Plant </li>
-				<li> Amarr - Emperor Family Academy </li>
-				<li> Ashab - Port Royal - EVE-Mogul </li>
-				<li> Any Eagle Company station </li>
-				</ul>
-              </div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-          
-          <!-- Accordion card -->
-          <div class="card border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingFour4">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFour4" aria-expanded="false" aria-controls="collapseFour4">
-                <h5 class="black-text font-weight-normal mb-0">
-                  How is the hauling service cost calculated? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseFour4" class="collapse" role="tabpanel" aria-labelledby="headingFour4" data-parent="#accordionEx">
-              <div class="card-body">
-					<p>The cost for the hauling service is equal to 30% of an individual cut of the mining operation.  You can see the equation <a href="https://www.wolframalpha.com/input/?i=m+%3D+5%2C+o+%3D+100%2C000%2C000%2C+p%3D%280.3*o%2F%28m%2B1%29%29%2C+solve+for+p" target="_blank">here</a>.</p>
-					<img src="img/CodeCogsEqn.png" class="pb-2" style="display: block; margin-left: auto; margin-right: auto;" alt="service equation">
-					<p>If there are 7 miners on grid (including one booster), the total capsuleers in fleet would be 8.  Lets say when the mining op is over the fleet collected a total of 150 million ISK worth of ice/ore Jita buy, we would divide 150 million by 8, which gets us 18,750,000&#8236;.  This would be the payment to everyone if the shares would be divided up equally, however we charge only 30% of this!</p>
-					<p>30% of 18,750,000&#8236; would be 5,625,000 ISK for our cost of service.  That leaves 20,625,000&#8236; ISK for everyone else each!
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-6 text-left">
+					<h3>
+						Eagle Company Tracker
+					</h3>
+				</div>
+				<div class="col-md-6 text-right">
+					 <a id="modal-324849" href="#modal-container-324849" role="button" class="btn" data-toggle="modal">Track Order</a>
 					
-              </p></div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-          
-          <!-- Accordion card -->
-          <div class="card border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingFive5">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseFive5" aria-expanded="false" aria-controls="collapseFive5">
-                <h5 class="black-text font-weight-normal mb-0">
-                  Can I request a refund? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseFive5" class="collapse" role="tabpanel" aria-labelledby="headingFive5" data-parent="#accordionEx">
-              <div class="card-body">
-					Unfortunately, not. We do not issue full or partial refunds for any reason.    
-              </div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-          
-          <!-- Accordion card -->
-          <div class="card border-left border-right border-light">
-
-            <!-- Card header -->
-            <div class="card-header border-bottom border-light" role="tab" id="headingSix6">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseSix6" aria-expanded="false" aria-controls="collapseSix6">
-                <h5 class="black-text font-weight-normal mb-0">
-                  How can I learn more about your manufacturing process? <i class="fas fa-angle-down rotate-icon"></i>
-                </h5>
-              </a>
-            </div>
-
-            <!-- Card body -->
-            <div id="collapseSix6" class="collapse" role="tabpanel" aria-labelledby="headingSix6" data-parent="#accordionEx">
-              <div class="card-body">
-					The location at which we manufacture our items is a company secret.  We can however assure you that the facility we use has the among the best rigs and modules for production; this keeps not just our costs down, but yours as well!  If you wish to learn more about manufacturing, take a look <a href="https://wiki.eveuniversity.org/Manufacturing"><b>here</b></a>!
-              </div>
-            </div>
-
-          </div>
-          <!-- Accordion card -->
-
-        </div>
-        <!-- Accordion wrapper -->
-        
-      </div>
-    </div>
-
-	</section>
-  
-  
+					<div class="modal fade" id="modal-container-324849" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="myModalLabel">
+										Track an order
+									</h5> 
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">×</span>
+									</button>
+								</div>
+								<div class="modal-body text-center">
+									<br>
+									Enter your 10-digit key: <input id="orderID" type="text" placeholder="XXXXXXXXXX" autocomplete="off">
+									<br><br>
+									Don't have a key?  Check the order confirmation in your EVEMail.
+									<br>
+								</div>
+								<div class="modal-footer">
+									 
+									<span class="waves-input-wrapper waves-effect waves-light"><input type="submit" id="submit" value="Submit" class="btn btn-info" onclick="key=trackOrder(document.getElementById('orderID').value);" data-dismiss="modal"></span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><hr><br>
+	<div class="row">
+		<div class="col-md-6">
+			<h4 class="text-left">
+				<span id="deliveryStatus" style="color:darkorange"><strong>Delivery Status</strong></span>
+			</h4>
+			<p class="text-left">
+				Delivery Location: <span id="deliveryLocation" style="color:green"><strong>Unavailable</strong></span>
+			</p>
+		</div>
+		<div class="col-md-6">
+			<p class="text-right" id="orderKey">
+				Order Key: <strong>Unavailable</strong>
+			</p>
+			<p class="text-right" id="courier">
+				Courier: <strong>Eagle Company</strong>
+			</p>
+		</div>
+	</div>
+	<br><br>
+	<div class="row">
+		<div class="col-md-12 text-center" id="deliveryImage">
+			<img alt='Eagle Company Tracker' src='images/OTN.png'>
+		</div>
+	</div>
 </div>
-
-
-<!-- Footer -->
-<footer class="page-footer font-small blue">
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">Eagle Company [EC-SM] | 
-    All Eve Related Materials are property of <a href="https://www.ccpgames.com/" title="CCP Games">CCP Games</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-  <!-- End your project here-->
-
-  <!-- CanvasDraw -->
-  <script type="text/javascript" src="js/canvasdraw.js"></script>
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script><div class="hiddendiv common"></div>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript">
-  $(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#home']").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
-
-      // Store hash
-      var hash = this.hash;
-
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 900, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash;
-      });
-    } // End if
-  });
-  
-  $(window).scroll(function() {
-    $(".slideanim").each(function(){
-      var pos = $(this).offset().top;
-
-      var winTop = $(window).scrollTop();
-        if (pos < winTop + 600) {
-          $(this).addClass("slide");
-        }
-    });
-  });
-})
-  </script>
-<script src="js/1.7.1.js" type="text/javascript"></script>
-  
-
-
-</body></html>
+<footer class="footer fixed-bottom">
+	<div class="row">
+		<div class="col-md-12">
+			<p class="text-center text-muted">
+				Tracker by <a href="https://wiki.eveuniversity.org/User:John_Silverfox" target="_blank" title="John Silverfox">John Silverfox</a>.  All Eve Related Materials are property of <a href="https://www.ccpgames.com/" target="_blank"  title="CCP Games">CCP Games</a>.
+			</p>
+		</div>
+	</div>
+	</footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
