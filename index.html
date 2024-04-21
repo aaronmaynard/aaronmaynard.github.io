@@ -1,35 +1,81 @@
 <!DOCTYPE html>
 <html>
-<title>Aaron Maynard</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-.bgimg {
-  background-image: url('https://www.w3schools.com/w3images/forestbridge.jpg');
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
+  <title>Aaron Maynard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+ .title {
+     letter-spacing: 0.14em;
+     color: #121212;
+     display: block;
+     font-size: 4em;
+     margin-top: 0.67em;
+     margin-bottom: 0.3em;
+     margin-left: 0;
+     margin-right: 0;
+     font-weight: bold;
 }
-</style>
-<body>
-
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-  <div class="w3-display-topleft w3-padding-large w3-xlarge">
-    Aaron Maynard
-  </div>
-  <div class="w3-display-middle">
-    <h1 class="w3-jumbo w3-animate-top">COMING SOON</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <p class="w3-large w3-center">Web Project Portal</p>
-  </div>
-  <div class="w3-display-bottomleft w3-padding-large">
-    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
-  </div>
-</div>
-
-</body>
+ body{
+     font-family: Arial, sans-serif;
+     padding: 50px;
+     margin: 0px;
+     font-style: normal;
+     text-align: center;
+}
+ .header{
+     text-transform: uppercase;
+}
+ .tagline {
+     letter-spacing: 0.42em;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 28px;
+     font-size: 0.80em;
+     color: #a8a8a8;
+     font-weight: bold;
+}
+.grid { 
+  --n: 4; /* The maximum number of columns */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(120px, 100%/var(--n)), 1fr));
+  grid-gap: 21px;
+  align-items: stretch;
+  width: 60%;
+  max-width: 700px;
+  margin: auto;
+  }
+.grid div img {
+  max-width: 100%;
+}
+.selectors {
+ max-width: 128px;
+ margin: auto;
+}
+  </style>
+  <body>
+    <div class="header">
+      <div class="title"> Aaron Maynard </div>
+      <div class="tagline"> Dallas-Based Pilot, Technician, Creative </div>
+	<br>
+    </div>
+    <div class="grid">
+      <div class="selectors">
+        <a href="#"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Browser-icon.png" alt="Travel"></a> Travel
+      </div>
+      <div class="selectors">
+        <a href="#"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Audio-Card-icon.png" alt="Tech"></a> Tech
+      </div>
+      <div class="selectors">
+        <a href="https://steamcommunity.com/profiles/76561198058581658/"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Steam-icon.png" alt="Games"></a> Games
+      </div>
+      <div class="selectors">
+        <a href="#"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Clementine-icon.png" alt="Food"></a> Food
+      </div>
+      <div class="selectors">
+        <a href="#"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Preferences-Desktop-B-icon.png" alt="Creative"></a> Creative
+      </div>
+      <div class="selectors">
+        <a href="https://github.com/aaronmaynard"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Glade-icon.png" alt="Other Projects"></a> Other Projects
+      </div>
+    </div>
+  </body>
 </html>
