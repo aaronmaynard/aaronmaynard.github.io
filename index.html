@@ -1,82 +1,87 @@
 <!DOCTYPE html>
-<html>
-  <title>Aaron Maynard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-  <style>
- .title {
-     letter-spacing: 0.14em;
-     color: #121212;
-     display: block;
-     font-size: 4em;
-     margin-top: 0.67em;
-     margin-bottom: 0.3em;
-     margin-left: 0;
-     margin-right: 0;
-     font-weight: bold;
-}
- body{
-     font-family: Arial, sans-serif;
-     padding: 50px;
-     margin: 0px;
-     font-style: normal;
-     text-align: center;
-}
- .header{
-     text-transform: uppercase;
-}
- .tagline {
-     letter-spacing: 0.42em;
-     margin-left: auto;
-     margin-right: auto;
-     margin-bottom: 28px;
-     font-size: 0.80em;
-     color: #a8a8a8;
-     font-weight: bold;
-}
-.grid { 
-  --n: 4; /* The maximum number of columns */
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max(120px, 100%/var(--n)), 1fr));
-  grid-gap: 21px;
-  align-items: stretch;
-  width: 60%;
-  max-width: 700px;
-  margin: auto;
-  }
-.grid div img {
-  max-width: 100%;
-}
-.selectors {
- max-width: 128px;
- margin: auto;
-}
-  </style>
-  <body>
-    <div class="header">
-      <div class="title"> Aaron Maynard </div>
-      <div class="tagline"> Dallas-Based Pilot, Technician, Creative </div>
-	<br>
-    </div>
-    <div class="grid">
-      <div class="selectors">
-        <a href="#" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Browser-icon.png" alt="Travel"></a> Travel
-      </div>
-      <div class="selectors">
-        <a href="#" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Audio-Card-icon.png" alt="Tech"></a> Tech
-      </div>
-      <div class="selectors">
-        <a href="https://steamcommunity.com/profiles/76561198058581658/" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Steam-icon.png" alt="Games"></a> Games
-      </div>
-      <div class="selectors">
-        <a href="#" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Clementine-icon.png" alt="Food"></a> Food
-      </div>
-      <div class="selectors">
-        <a href="#" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Preferences-Desktop-B-icon.png" alt="Creative"></a> Creative
-      </div>
-      <div class="selectors">
-        <a href="https://github.com/aaronmaynard" target="_blank"><img src="https://icons.iconarchive.com/icons/alecive/flatwoken/256/Apps-Glade-icon.png" alt="Other Projects"></a> Other Projects
-      </div>
-    </div>
-  </body>
+<html lang="en">
+	<head>
+		<title>Aaron Maynard</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		<link href="css/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse menu">
+			<div class="container-fluid menu-container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand menu-logo" href="#">Aaron Maynard</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav menu-items-container">
+						<li class="menu-item active">
+							<a class="menu-link-first" href="#">
+								<span class="menu-item-text">Home</span>
+							</a>
+						</li>
+						<li class="menu-item dropdown">
+							<a class="dropdown-toggle menu-link" data-toggle="dropdown" href="#">
+								<span class="menu-item-text">Skills <span class="caret"></span>
+								</span>
+							</a>
+							<div class="dropdown-menu">
+								<div class="dropdown-menu-wrapper">
+									<ul class="dropdown-menu-items">
+										<li class="dropdown-menu-item">
+											<a href="#">Robotics</a>
+										</li>
+										<li class="dropdown-menu-item">
+											<a href="#">Aviation</a>
+										</li>
+										<li class="dropdown-menu-item">
+											<a href="#">Web Dev</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="menu-item dropdown">
+							<a class="dropdown-toggle menu-link" data-toggle="dropdown" href="#">
+								<span class="menu-item-text">Social <span class="caret"></span>
+								</span>
+							</a>
+							<div class="dropdown-menu">
+								<div class="dropdown-menu-wrapper">
+									<ul class="dropdown-menu-items">
+										<li class="dropdown-menu-item">
+											<a href="#">LinkedIn</a>
+										</li>
+										<li class="dropdown-menu-item">
+											<a href="#">Instagram</a>
+										</li>
+										<li class="dropdown-menu-item">
+											<a href="#">YouTube</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="menu-item">
+							<a class="menu-link" href="#">
+								<span class="menu-item-text">GitHub</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<h3>Website Content</h3>
+			<p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
+			<p>Only when the button is clicked, the navigation bar will be displayed.</p>
+		</div>
+	</body>
 </html>
