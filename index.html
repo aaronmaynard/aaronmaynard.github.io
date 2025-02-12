@@ -50,4 +50,18 @@
       </div>
     </div>
   </body>
+  	<script>
+document.addEventListener("mousemove", function (event) {
+  const bg = document.getElementById("bg");
+  if (!bg) return;
+
+  const mouseX = event.clientX / window.innerWidth;  // Normalize (0 to 1)
+  const mouseY = event.clientY / window.innerHeight; // Normalize (0 to 1)
+
+  const moveX = (mouseX - 0.5) * 20; // Adjust intensity (increase for more movement)
+  const moveY = (mouseY - 0.5) * 10; // Adjust intensity
+
+  bg.style.backgroundPosition = `${moveX}px ${moveY}px`; // Change from % to px
+});
+	</script>
 </html>
