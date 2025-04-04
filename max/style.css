@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: 'Caudex', serif;
+  background-color: #111;
+  color: #f4f4f4;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.tagline {
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.main-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, #111 70%, transparent);
+  text-align: center;
+  padding: 1rem 0 2rem;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  position: relative;
+  padding: 0 0.5rem;
+}
+
+.nav-list li:not(:last-child)::after {
+  content: "|";
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to bottom, transparent, white 50%, transparent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #ffb400;
+}
+
+.hero {
+  display: block;
+  margin: 25px auto;
+  width: 30%;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
