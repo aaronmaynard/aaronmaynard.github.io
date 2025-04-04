@@ -85,3 +85,9 @@ nav a:hover {
   margin-top: 2rem;
   font-size: 1.2rem;
 }
+
+img {
+  max-width: -webkit-fill-available;
+  width: 100%;
+  height: auto;
+}
