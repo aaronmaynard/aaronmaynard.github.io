@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Baby Bottle Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      touch-action: none;
+      user-select: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .app {
+      width: 100vw;
+      height: 100vh;
+      max-width: 1080px;
+      max-height: 1920px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 25px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .app-header h1 {
+      font-size: 36px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .settings-button {
+      background: none;
+      border: none;
+      font-size: 36px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+      min-width: 50px;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .settings-button:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .settings-button:active {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .zones-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .state-zone {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      border: 3px solid;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .state-zone.drag-over {
+      transform: scale(1.02);
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .zone-header {
+      padding: 12px 18px;
+      color: white;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .zone-header h2 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    .cleaning-timer {
+      font-size: 36px;
+      font-weight: bold;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .zone-items {
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-content: flex-start;
+      overflow-y: auto;
+      min-height: 0;
+    }
+
+    .item-card {
+      background: white;
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: grab;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-width: 90px;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .item-card:active {
+      cursor: grabbing;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .item-card.dragging {
+      opacity: 0.5;
+    }
+
+    .item-emoji {
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    .item-label {
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .controls-panel {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .quick-add-buttons {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quick-add-buttons h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #333;
+      text-align: center;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .add-button {
+      background: white;
+      border: 3px solid #667eea;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 20px;
+      font-weight: 600;
+      color: #667eea;
+      flex: 1;
+      min-height: 100px;
+      justify-content: center;
+    }
+
+    .add-button:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .add-button:active {
+      transform: translateY(0);
+    }
+
+    .button-emoji {
+      font-size: 36px;
+    }
+
+    .button-label {
+      font-size: 20px;
+    }
+
+    .cleaning-controls {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .cleaning-button {
+      width: 100%;
+      padding: 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 24px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: white;
+      min-height: 80px;
+    }
+
+    .cleaning-button.start {
+      background: #4CAF50;
+    }
+
+    .cleaning-button.start:hover {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    }
+
+    .cleaning-button.finish {
+      background: #f44336;
+    }
+
+    .cleaning-button.finish:hover {
+      background: #da190b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    }
+
+    .cleaning-button:active {
+      transform: translateY(0);
+    }
+
+    .settings-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .settings-overlay.open {
+      display: flex;
+    }
+
+    .settings-modal {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 900px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .settings-header h2 {
+      font-size: 32px;
+      color: #333;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 42px;
+      cursor: pointer;
+      color: #666;
+      line-height: 1;
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+    }
+
+    .close-button:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .settings-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .setting-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .setting-item label {
+      font-size: 22px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .setting-item input {
+      padding: 15px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      font-size: 22px;
+      width: 100%;
+    }
+
+    .setting-item input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .save-button {
+      padding: 18px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .save-button:hover {
+      background: #5568d3;
+    }
+
+    .zone-items::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    .zone-items::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+    }
+
+    .zone-items::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .zone-items::-webkit-scrollbar-thumb:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>Baby Bottle Tracker</h1>
+      <button class="settings-button" id="settingsButton">⚙️</button>
+    </header>
+
+    <div class="main-content">
+      <div class="zones-container">
+        <div class="state-zone" data-state="ready" style="border-color: #4CAF50;">
+          <div class="zone-header" style="background-color: #4CAF50;">
+            <h2>Ready (Fridge)</h2>
+            <div class="cleaning-timer" id="timer-ready" style="display: none;"></div>
+          </div>
+          <div class="zone-items" id="zone-ready"></div>
+        </div>
+
+        <div class="state-zone" data-state="in-use" style="border-color: #2196F3;">
+          <div class="zone-header" style="background-color: #2196F3;">
+            <h2>In Use</h2>
+            <div class="cleaning-timer" id="timer-in-use" style="display: none;"></div>
+          </div>
+          <div class="zone-items" id="zone-in-use"></div>
+        </div>
+
+        <div class="state-zone" data-state="awaiting-cleaning" style="border-color: #FF9800;">
+          <div class="zone-header" style="background-color: #FF9800;">
+            <h2>Awaiting Cleaning</h2>
+            <div class="cleaning-timer" id="timer-awaiting-cleaning"></div>
+          </div>
+          <div class="zone-items" id="zone-awaiting-cleaning"></div>
+        </div>
+
+        <div class="state-zone" data-state="storage" style="border-color: #9E9E9E;">
+          <div class="zone-header" style="background-color: #9E9E9E;">
+            <h2>Storage (Cabinet)</h2>
+            <div class="cleaning-timer" id="timer-storage" style="display: none;"></div>
+          </div>
+          <div class="zone-items" id="zone-storage"></div>
+        </div>
+      </div>
+
+      <div class="controls-panel">
+        <div class="quick-add-buttons">
+          <h3>Quick Add to Fridge:</h3>
+          <div class="button-group">
+            <button class="add-button bottle-6oz" data-type="bottle-6oz">
+              <span class="button-emoji">🍼</span>
+              <span class="button-label">6oz</span>
+            </button>
+            <button class="add-button bottle-12oz" data-type="bottle-12oz">
+              <span class="button-emoji">🍼</span>
+              <span class="button-label">12oz</span>
+            </button>
+            <button class="add-button pump" data-type="pump">
+              <span class="button-emoji">💧</span>
+              <span class="button-label">Pump</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="cleaning-controls">
+          <button class="cleaning-button start" id="cleaningButton">Start Cleaning</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="settings-overlay" id="settingsOverlay">
+    <div class="settings-modal">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button class="close-button" id="closeSettings">×</button>
+      </div>
+      <div class="settings-content">
+        <div class="setting-item">
+          <label for="cleaning-duration">Cleaning Duration (minutes):</label>
+          <input type="number" id="cleaning-duration" min="1" max="120" value="30">
+        </div>
+        <button class="save-button" id="saveSettings">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Store/State Management
+    class Store {
+      constructor() {
+        this.state = {
+          items: [],
+          cleaningInProgress: false,
+          cleaningStartTime: null,
+          cleaningDuration: 30
+        };
+        this.settings = {
+          cleaningDuration: 30
+        };
+        this.listeners = [];
+        this.load();
+      }
+
+      subscribe(listener) {
+        this.listeners.push(listener);
+        return () => {
+          const index = this.listeners.indexOf(listener);
+          if (index > -1) this.listeners.splice(index, 1);
+        };
+      }
+
+      notify() {
+        this.listeners.forEach(listener => listener());
+      }
+
+      load() {
+        try {
+          const saved = localStorage.getItem('babybottlepop-state');
+          if (saved) {
+            this.state = JSON.parse(saved);
+          }
+          const savedSettings = localStorage.getItem('babybottlepop-settings');
+          if (savedSettings) {
+            this.settings = JSON.parse(savedSettings);
+            this.state.cleaningDuration = this.settings.cleaningDuration;
+          }
+        } catch (e) {
+          console.error('Failed to load state:', e);
+        }
+      }
+
+      save() {
+        try {
+          localStorage.setItem('babybottlepop-state', JSON.stringify(this.state));
+          localStorage.setItem('babybottlepop-settings', JSON.stringify(this.settings));
+        } catch (e) {
+          console.error('Failed to save state:', e);
+        }
+      }
+
+      getState() {
+        return JSON.parse(JSON.stringify(this.state));
+      }
+
+      getSettings() {
+        return JSON.parse(JSON.stringify(this.settings));
+      }
+
+      addItem(type, state = 'ready') {
+        const item = {
+          id: `${type}-${Date.now()}-${Math.random()}`,
+          type: type,
+          state: state
+        };
+        this.state.items.push(item);
+        this.save();
+        this.notify();
+      }
+
+      moveItem(itemId, newState) {
+        const item = this.state.items.find(i => i.id === itemId);
+        if (item) {
+          item.state = newState;
+          this.save();
+          this.notify();
+        }
+      }
+
+      getNextState(item) {
+        const currentState = item.state;
+        
+        if (item.type === 'pump') {
+          switch (currentState) {
+            case 'in-use': return 'awaiting-cleaning';
+            case 'awaiting-cleaning': return 'storage';
+            case 'storage': return 'in-use';
+            case 'ready': return 'in-use';
+            default: return 'in-use';
+          }
+        } else {
+          switch (currentState) {
+            case 'ready': return 'in-use';
+            case 'in-use': return 'awaiting-cleaning';
+            case 'awaiting-cleaning': return 'storage';
+            case 'storage': return 'ready';
+            default: return 'ready';
+          }
+        }
+      }
+
+      moveToNextState(itemId) {
+        const item = this.state.items.find(i => i.id === itemId);
+        if (item) {
+          const nextState = this.getNextState(item);
+          this.moveItem(itemId, nextState);
+        }
+      }
+
+      removeItem(itemId) {
+        this.state.items = this.state.items.filter(i => i.id !== itemId);
+        this.save();
+        this.notify();
+      }
+
+      startCleaning() {
+        this.state.cleaningInProgress = true;
+        this.state.cleaningStartTime = Date.now();
+        this.save();
+        this.notify();
+      }
+
+      finishCleaning() {
+        this.state.cleaningInProgress = false;
+        this.state.cleaningStartTime = null;
+        this.save();
+        this.notify();
+      }
+
+      updateSettings(settings) {
+        this.settings = { ...this.settings, ...settings };
+        this.state.cleaningDuration = this.settings.cleaningDuration;
+        this.save();
+        this.notify();
+      }
+
+      getRemainingCleaningTime() {
+        if (!this.state.cleaningInProgress || !this.state.cleaningStartTime) {
+          return null;
+        }
+        const elapsed = (Date.now() - this.state.cleaningStartTime) / 1000 / 60;
+        const remaining = this.state.cleaningDuration - elapsed;
+        return Math.max(0, remaining);
+      }
+    }
+
+    // App State
+    const store = new Store();
+    let draggedItem = null;
+    let draggedElement = null;
+    let clickStartTime = null;
+    let clickStartPos = null;
+    let hasMoved = false;
+
+    // Item images and labels
+    const itemImages = {
+      'bottle-6oz': '🍼',
+      'bottle-12oz': '🍼',
+      'pump': '💧'
+    };
+
+    const itemLabels = {
+      'bottle-6oz': '6oz',
+      'bottle-12oz': '12oz',
+      'pump': 'Pump'
+    };
+
+    // Render functions
+    function createItemCard(item) {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.draggable = true;
+      card.dataset.itemId = item.id;
+      card.dataset.itemType = item.type;
+      card.dataset.itemState = item.state;
+
+      const emoji = document.createElement('div');
+      emoji.className = 'item-emoji';
+      emoji.textContent = itemImages[item.type];
+
+      const label = document.createElement('div');
+      label.className = 'item-label';
+      label.textContent = itemLabels[item.type];
+
+      card.appendChild(emoji);
+      card.appendChild(label);
+
+      // Drag events
+      card.addEventListener('dragstart', handleDragStart);
+      card.addEventListener('dragend', handleDragEnd);
+      card.addEventListener('touchstart', handleTouchStart, { passive: false });
+      card.addEventListener('touchmove', handleTouchMove, { passive: false });
+      card.addEventListener('touchend', handleTouchEnd);
+
+      return card;
+    }
+
+    function renderItems() {
+      const state = store.getState();
+      const zones = {
+        'ready': document.getElementById('zone-ready'),
+        'in-use': document.getElementById('zone-in-use'),
+        'awaiting-cleaning': document.getElementById('zone-awaiting-cleaning'),
+        'storage': document.getElementById('zone-storage')
+      };
+
+      // Clear all zones
+      Object.values(zones).forEach(zone => {
+        zone.innerHTML = '';
+      });
+
+      // Add items to their zones
+      state.items.forEach(item => {
+        const zone = zones[item.state];
+        if (zone) {
+          const card = createItemCard(item);
+          zone.appendChild(card);
+        }
+      });
+    }
+
+    function updateCleaningTimer() {
+      const state = store.getState();
+      const timer = document.getElementById('timer-awaiting-cleaning');
+      
+      if (state.cleaningInProgress) {
+        const remaining = store.getRemainingCleaningTime();
+        if (remaining !== null) {
+          const minutes = Math.floor(remaining);
+          const seconds = Math.floor((remaining % 1) * 60);
+          timer.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+          timer.style.display = 'block';
+        }
+      } else {
+        timer.style.display = 'none';
+      }
+    }
+
+    function updateCleaningButton() {
+      const state = store.getState();
+      const button = document.getElementById('cleaningButton');
+      
+      if (state.cleaningInProgress) {
+        button.textContent = 'Finish Cleaning';
+        button.className = 'cleaning-button finish';
+      } else {
+        button.textContent = 'Start Cleaning';
+        button.className = 'cleaning-button start';
+      }
+    }
+
+    // Drag and Drop handlers
+    function handleDragStart(e) {
+      draggedItem = e.target.dataset.itemId;
+      draggedElement = e.target;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', e.target.outerHTML);
+      clickStartTime = Date.now();
+      clickStartPos = { x: e.clientX || 0, y: e.clientY || 0 };
+      hasMoved = false;
+    }
+
+    function handleDragEnd(e) {
+      e.target.classList.remove('dragging');
+      draggedItem = null;
+      draggedElement = null;
+      
+      // Remove drag-over class from all zones
+      document.querySelectorAll('.state-zone').forEach(zone => {
+        zone.classList.remove('drag-over');
+      });
+    }
+
+    function handleTouchStart(e) {
+      const card = e.target.closest('.item-card');
+      if (!card) return;
+      
+      e.preventDefault();
+      draggedItem = card.dataset.itemId;
+      draggedElement = card;
+      clickStartTime = Date.now();
+      const touch = e.touches[0];
+      clickStartPos = { x: touch.clientX, y: touch.clientY };
+      hasMoved = false;
+      card.style.opacity = '0.5';
+    }
+
+    function handleTouchMove(e) {
+      if (!draggedElement) return;
+      
+      const touch = e.touches[0];
+      const deltaX = Math.abs(touch.clientX - clickStartPos.x);
+      const deltaY = Math.abs(touch.clientY - clickStartPos.y);
+      
+      if (deltaX > 10 || deltaY > 10) {
+        hasMoved = true;
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (!draggedElement) return;
+      
+      const card = draggedElement;
+      card.style.opacity = '1';
+      
+      const touch = e.changedTouches[0];
+      const endPos = { x: touch.clientX, y: touch.clientY };
+      const elementBelow = document.elementFromPoint(endPos.x, endPos.y);
+      const zone = elementBelow ? elementBelow.closest('.state-zone') : null;
+      
+      if (zone && !hasMoved) {
+        // Click - move to next state
+        store.moveToNextState(draggedItem);
+      } else if (zone && hasMoved) {
+        // Drag - move to zone
+        const newState = zone.dataset.state;
+        const state = store.getState();
+        const item = state.items.find(i => i.id === draggedItem);
+        if (item && item.state !== newState) {
+          store.moveItem(draggedItem, newState);
+        } else if (item && item.state === newState) {
+          store.moveToNextState(draggedItem);
+        }
+      } else if (!hasMoved) {
+        // Click outside zone
+        store.moveToNextState(draggedItem);
+      }
+      
+      draggedItem = null;
+      draggedElement = null;
+    }
+
+    // Zone drop handlers
+    document.querySelectorAll('.state-zone').forEach(zone => {
+      zone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        zone.classList.add('drag-over');
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('drag-over');
+      });
+
+      zone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        zone.classList.remove('drag-over');
+        
+        if (draggedItem) {
+          const newState = zone.dataset.state;
+          const state = store.getState();
+          const item = state.items.find(i => i.id === draggedItem);
+          
+          // Check if dropped in same zone (click) or different zone (drag)
+          const clickDuration = Date.now() - clickStartTime;
+          if (item && item.state === newState && clickDuration < 300) {
+            // Click in same zone
+            store.moveToNextState(draggedItem);
+          } else if (item && item.state !== newState) {
+            // Drag to different zone
+            store.moveItem(draggedItem, newState);
+          } else if (item && item.state === newState) {
+            // Click but same zone
+            store.moveToNextState(draggedItem);
+          }
+        }
+      });
+    });
+
+    // Click handler for items (mouse clicks, fallback for non-drag)
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.item-card');
+      if (card) {
+        const itemId = card.dataset.itemId;
+        if (itemId) {
+          // Only handle if it wasn't a drag operation
+          const clickDuration = Date.now() - (clickStartTime || 0);
+          if (!hasMoved && clickDuration < 300) {
+            store.moveToNextState(itemId);
+          }
+        }
+      }
+    });
+
+    // Quick add buttons
+    document.querySelectorAll('.add-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const type = button.dataset.type;
+        store.addItem(type, 'ready');
+      });
+    });
+
+    // Cleaning button
+    document.getElementById('cleaningButton').addEventListener('click', () => {
+      const state = store.getState();
+      if (state.cleaningInProgress) {
+        store.finishCleaning();
+      } else {
+        store.startCleaning();
+      }
+    });
+
+    // Settings
+    document.getElementById('settingsButton').addEventListener('click', () => {
+      const overlay = document.getElementById('settingsOverlay');
+      const settings = store.getSettings();
+      document.getElementById('cleaning-duration').value = settings.cleaningDuration;
+      overlay.classList.add('open');
+    });
+
+    document.getElementById('closeSettings').addEventListener('click', () => {
+      document.getElementById('settingsOverlay').classList.remove('open');
+    });
+
+    document.getElementById('settingsOverlay').addEventListener('click', (e) => {
+      if (e.target.id === 'settingsOverlay') {
+        document.getElementById('settingsOverlay').classList.remove('open');
+      }
+    });
+
+    document.getElementById('saveSettings').addEventListener('click', () => {
+      const duration = parseInt(document.getElementById('cleaning-duration').value);
+      store.updateSettings({ cleaningDuration: duration });
+      document.getElementById('settingsOverlay').classList.remove('open');
+    });
+
+    // Subscribe to state changes
+    store.subscribe(() => {
+      renderItems();
+      updateCleaningButton();
+    });
+
+    // Update timer every second
+    setInterval(() => {
+      updateCleaningTimer();
+    }, 1000);
+
+    // Initial render
+    renderItems();
+    updateCleaningButton();
+    updateCleaningTimer();
+  </script>
+</body>
+</html>
